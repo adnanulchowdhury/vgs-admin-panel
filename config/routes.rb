@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root to: 'home#index'
   resources :teacher_cohorts
   resources :student_cohorts
   resources :cohorts

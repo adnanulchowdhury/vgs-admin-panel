@@ -28,7 +28,17 @@
 
   <div class="field">
     <%= form.label :education %>
-    <%= form.text_field :education %>
+    <%= form.select :education, ["HS", "College", "Masters", "PH.D"] %>
+  </div>
+
+  <div class="field">
+    <%= form.label :salary %>
+    <%= form.number_field :salary %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cohort_id %>
+    <%= form.collection_select(:cohort_id, Cohort.all, :id, :name) %>
   </div>
 
   <div class="actions">

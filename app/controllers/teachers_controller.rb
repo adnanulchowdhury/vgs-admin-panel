@@ -19,6 +19,7 @@ class TeachersController < ApplicationController
 
   # GET /teachers/1/edit
   def edit
+    
   end
 
   # POST /teachers
@@ -69,6 +70,6 @@ class TeachersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def teacher_params
-      params.require(:teacher).permit(:first_name, :last_name, :age, :education)
+      params.require(:teacher).permit(:first_name, :last_name, :age, :education, :salary, :cohort_id)
     end
 end
