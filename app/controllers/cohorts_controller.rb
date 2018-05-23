@@ -10,6 +10,7 @@ class CohortsController < ApplicationController
   # GET /cohorts/1
   # GET /cohorts/1.json
   def show
+    @cohort = Cohort.find(params[:id])
   end
 
   # GET /cohorts/new
@@ -59,6 +60,21 @@ class CohortsController < ApplicationController
       format.html { redirect_to cohorts_url, notice: 'Cohort was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def add_student
+    student_cohort = StudentCohort.new(
+      cohort_id: params[:cohort_id],
+      student_id: params[:student_id]
+    )
+
+    if student_cohort.save
+      flash[:info] = "Everything good"
+    else
+      flash[:error] = "Everything bad"
+    end
+
+    redirect_to edit_cohort_path(params[:cohort_id])
   end
 
   private
