@@ -22,8 +22,23 @@
 
 <p>
   <strong>Teacher:</strong>
-  <%= @cohort.teacher.first_name %>
-  <%= @cohort.teacher.last_name %>
+  <% if @cohort.teacher %>
+    <%= @cohort.teacher.full_name %>
+  <% else %>
+    No teacher in this cohort, add a <%= link_to 'teacher', edit_cohort_path(@cohort) %>
+  <% end%>
+</p>
+
+<p>
+  <strong>Students:</strong><br />
+  <% if @cohort.students.count > 0 %>
+    <% @cohort.students.each do | student | %>
+      <%= student.full_name %><br />
+    <% end %>
+    <%= link_to 'add student', new_student_cohort_path(@student_cohort) %>
+  <% else %>
+    No students in this cohort, <%= link_to 'add student', new_student_cohort_path(@student_cohort) %>
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_cohort_path(@cohort) %> |

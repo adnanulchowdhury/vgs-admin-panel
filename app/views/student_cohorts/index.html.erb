@@ -14,8 +14,8 @@
   <tbody>
     <% @student_cohorts.each do |student_cohort| %>
       <tr>
-        <td><%= student_cohort.student_id %></td>
-        <td><%= student_cohort.cohort_id %></td>
+        <td><%= student_cohort.student.full_name %></td>
+        <td><%= student_cohort.cohort.name %></td>
         <td><%= link_to 'Show', student_cohort %></td>
         <td><%= link_to 'Edit', edit_student_cohort_path(student_cohort) %></td>
         <td><%= link_to 'Destroy', student_cohort, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -26,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Student Cohort', new_student_cohort_path %>
+<%= link_to 'Add New Student to a Cohort', new_student_cohort_path %>
